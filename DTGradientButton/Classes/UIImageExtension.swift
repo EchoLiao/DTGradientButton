@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum DTImageGradientDirection {
+@objc public enum DTImageGradientDirection: Int {
     case toLeft
     case toRight
     case toTop
@@ -20,7 +20,7 @@ public enum DTImageGradientDirection {
 }
 
 public extension UIImage {
-    convenience init?(size: CGSize, direction: DTImageGradientDirection, colors: [UIColor]) {
+    @objc convenience init?(size: CGSize, direction: DTImageGradientDirection, colors: [UIColor]) {
         UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
         
         guard let context = UIGraphicsGetCurrentContext() else { return nil } // If the size is zero, the context will be nil.
@@ -91,7 +91,7 @@ public extension UIImage {
         defer { UIGraphicsEndImageContext() }
     }
     
-    convenience init?(color: UIColor, size: CGSize) {
+    @objc convenience init?(color: UIColor, size: CGSize) {
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         color.setFill()
         let rect = CGRect(origin: CGPoint.zero, size: size)
